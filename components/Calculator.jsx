@@ -2,7 +2,16 @@ import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-nativ
 import React, { useState } from 'react'
 
 const Calculator = () => {
-    const [calcDisplay, setCalcDisplay] = useState("789")
+    const [calcDisplay, setCalcDisplay] = useState("0");
+    const handleResult = () => {
+        const d = eval(calcDisplay)
+
+        setCalcDisplay(d.toString())
+
+
+    }
+
+
     return (
         <View style={styles.container}>
             <Text style={styles.screenTitle}>Calculator App</Text>
@@ -11,65 +20,68 @@ const Calculator = () => {
                 onChangeText={(digit) => setCalcDisplay(digit)} value={calcDisplay} />
 
             <View style={styles.btnsWrapper}>
-                <TouchableOpacity style={styles.claerBtttnStyle}>
+                <TouchableOpacity onPress={() => { setCalcDisplay("") }} style={styles.claerBtttnStyle}>
                     <Text style={styles.btnText}>AC</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.operatorBtnStyle}>
+                <TouchableOpacity onPress={() => { setCalcDisplay(calcDisplay + "+") }} style={styles.operatorBtnStyle}>
                     <Text style={styles.btnText}>+</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.operatorBtnStyle}>
+                <TouchableOpacity onPress={() => { setCalcDisplay(calcDisplay + "-") }} style={styles.operatorBtnStyle}>
                     <Text style={styles.btnText}>-</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.operatorBtnStyle}>
+                <TouchableOpacity onPress={() => { setCalcDisplay(calcDisplay + "*") }} style={styles.operatorBtnStyle}>
                     <Text style={styles.btnText}>x</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.btnstyle}>
+                <TouchableOpacity onPress={() => { setCalcDisplay(calcDisplay + "1") }} style={styles.btnstyle}>
                     <Text style={styles.btnText}>1</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.btnstyle}>
+                <TouchableOpacity onPress={() => { setCalcDisplay(calcDisplay + "2") }} style={styles.btnstyle}>
                     <Text style={styles.btnText}>2</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.btnstyle}>
+                <TouchableOpacity onPress={() => { setCalcDisplay(calcDisplay + "3") }} style={styles.btnstyle}>
                     <Text style={styles.btnText}>3</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.operatorBtnStyle}>
+                <TouchableOpacity onPress={() => { setCalcDisplay(calcDisplay + "/") }} style={styles.operatorBtnStyle}>
                     <Text style={styles.btnText}>/</Text>
                 </TouchableOpacity>
-            
-                <TouchableOpacity style={styles.btnstyle}>
+
+                <TouchableOpacity onPress={() => { setCalcDisplay(calcDisplay + "4") }} style={styles.btnstyle}>
                     <Text style={styles.btnText}>4</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.btnstyle}>
+                <TouchableOpacity onPress={() => { setCalcDisplay(calcDisplay + "5") }} style={styles.btnstyle}>
                     <Text style={styles.btnText}>5</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.btnstyle}>
+                <TouchableOpacity onPress={() => { setCalcDisplay(calcDisplay + "6") }} style={styles.btnstyle}>
                     <Text style={styles.btnText}>6</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.operatorBtnStyle}>
+                <TouchableOpacity onPress={() => { setCalcDisplay(calcDisplay + "%") }} style={styles.operatorBtnStyle}>
                     <Text style={styles.btnText}>%</Text>
                 </TouchableOpacity>
-        
-                <TouchableOpacity style={styles.btnstyle}>
+
+                <TouchableOpacity onPress={() => { setCalcDisplay(calcDisplay + "7") }} style={styles.btnstyle}>
                     <Text style={styles.btnText}>7</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.btnstyle}>
+                <TouchableOpacity onPress={() => { setCalcDisplay(calcDisplay + "8") }} style={styles.btnstyle}>
                     <Text style={styles.btnText}>8</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.btnstyle}>
+                <TouchableOpacity onPress={() => { setCalcDisplay(calcDisplay + "9") }} style={styles.btnstyle}>
                     <Text style={styles.btnText}>9</Text>
                 </TouchableOpacity>
-    
 
-                <TouchableOpacity style={styles.btnstyle}>
+
+                <TouchableOpacity onPress={() => { setCalcDisplay(calcDisplay + "0") }} style={styles.btnstyle}>
                     <Text style={styles.btnText}>0</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.equalBtnStyle}>
+                <TouchableOpacity onPress={handleResult}
+                    style={styles.equalBtnStyle}>
                     <Text style={styles.btnText}>=</Text>
                 </TouchableOpacity>
-      
+
             </View>
+
+
         </View>
     )
 }
@@ -77,7 +89,8 @@ const Calculator = () => {
 export default Calculator
 
 const styles = StyleSheet.create({
-    claerBtttnStyle:{
+
+    claerBtttnStyle: {
         justifyContent: 'center',
         alignItems: 'center',
         height: 80,
@@ -86,9 +99,12 @@ const styles = StyleSheet.create({
         backgroundColor: 'orange'
     },
     container: {
-        flex: 1,
+        flexDirection: 'column',
+        justifyContent: 'space-evenly',
+        alignItems: 'stretch',
+
         paddingVertical: 12,
-        paddingHorizontal: 14,
+        paddingHorizontal: 18,
     },
     screenTitle: {
         paddingVertical: 12,
@@ -105,15 +121,15 @@ const styles = StyleSheet.create({
         borderRadius: 12,
         backgroundColor: 'green'
     },
-    equalBtnStyle:{
+    equalBtnStyle: {
         justifyContent: 'center',
         alignItems: 'center',
         height: 80,
         width: "100%",
         borderRadius: 12,
-        backgroundColor: 'green'
+        backgroundColor: '#00635D'
     },
-    operatorBtnStyle:{
+    operatorBtnStyle: {
         justifyContent: 'center',
         alignItems: 'center',
         height: 80,
@@ -130,16 +146,22 @@ const styles = StyleSheet.create({
 
     },
     resultText: {
+        marginTop: 50,
+        marginBottom: 40,
         textAlign: 'right',
+        height: 100,
         fontWeight: 600,
         fontSize: 24,
         borderColor: 'green',
         borderWidth: 1,
         borderRadius: 12,
+        paddingVertical: 12,
+        paddingHorizontal: 12,
 
 
     },
     btnsWrapper: {
+
         paddingVertical: 12,
         flexDirection: 'row',
         flex: 1,
