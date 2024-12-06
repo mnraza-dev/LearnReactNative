@@ -1,14 +1,14 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import Header from './components/Header'
-import Product from './components/Product'
+import ProductList from './components/ProductList'
 
 const App = () => {
   return (
     <View>
-      <Header />
+      {/* <Header /> */}
 
-      <Product />
+      {/* <ProductList /> */}
     </View>
   )
 }
