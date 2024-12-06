@@ -11,7 +11,6 @@ const Calculator = () => {
 
     }
 
-
     return (
         <View style={styles.container}>
             <Text style={styles.screenTitle}>Calculator App</Text>

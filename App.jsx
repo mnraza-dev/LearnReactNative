@@ -4,15 +4,18 @@ import Header from './components/Header'
 import ProductList from './components/ProductList'
 import Calculator from './components/Calculator'
 
+import ExampleModal from './components/ExampleModal'
+
 const App = () => {
   return (
     <View>
-      <StatusBar backgroundColor="green"/>
+      <StatusBar backgroundColor="green" barStyle='default'  />
       {/* <Header /> */}
       {/* <ProductList /> */}
 
       
-      <Calculator/>
+      {/* <Calculator/> */}
+      <ExampleModal/>
     </View>
   )
 }
